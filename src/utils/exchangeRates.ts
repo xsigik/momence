@@ -7,6 +7,7 @@ const headerParser = (data: string, delimiter: string = "|") => {
 }
 
 const rateParser = (data: string, delimiter: string = "|"): ExchangeRate => {
+    console.log(data);
     const [country, currency, amountRaw, code, rateRaw ] = data.split(delimiter);
     return {
         country,
@@ -22,6 +23,6 @@ export const parseExchangeRates = (data: string[]): ExchangeRatesData => {
     return {
         date: dateParser(date),
         header: headerParser(header),
-        rates: rates.map(rate => rateParser(rate)),
+        rates: rates.filter(rate => !!rate).map(rate => rateParser(rate)),
     }
 }

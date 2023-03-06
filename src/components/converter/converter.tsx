@@ -1,6 +1,17 @@
 import moment from "moment";
 import { useExchangeRatesQuery } from "../../queries/exchangeRatesQuery";
 import { useTranslation } from "react-i18next";
+import {
+  Card,
+  CardContent,
+  Container,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
 
 export const Converter = () => {
   const { isLoading, data } = useExchangeRatesQuery();
@@ -17,39 +28,45 @@ export const Converter = () => {
   const { date, rates, header } = data;
 
   return (
-    <div>
+    <Container maxWidth="sm">
+      <Typography variant="h1">Currency converter</Typography>
       <h2>
         {t("date")}: {moment(date).format("DD.MM.YYYY")}
       </h2>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            {header.map((item, index) => (
-              <th key={index}>{item}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rates.map((rate, index) => (
-            <tr key={index}>
-              <td>
-                <img
-                  crossOrigin="anonymous"
-                  src={`https://countryflagsapi.com/svg/${rate.country}`}
-                  alt=""
-                  width="30"
-                />
-              </td>
-              <td>{rate.country}</td>
-              <td>{rate.currency}</td>
-              <td>{rate.amount}</td>
-              <td>{rate.code}</td>
-              <td>{rate.rate}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+      <Card>
+        <CardContent>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell></TableCell>
+                {header.map((item, index) => (
+                  <TableCell key={index}>{item}</TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rates.map((rate, index) => (
+                <TableRow key={index}>
+                  <TableCell>
+                    <img
+                      crossOrigin="anonymous"
+                      src={`/flags/${rate.country}.svg`}
+                      alt=""
+                      width="32"
+                      height="24"
+                    />
+                  </TableCell>
+                  <TableCell>{rate.country}</TableCell>
+                  <TableCell>{rate.currency}</TableCell>
+                  <TableCell align="right">{rate.amount}</TableCell>
+                  <TableCell>{rate.code}</TableCell>
+                  <TableCell align="right">{rate.rate}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+    </Container>
   );
 };
