@@ -18,8 +18,9 @@ const rateParser = (data: string, delimiter: string = "|"): ExchangeRate => {
     }
 }
 
-export const parseExchangeRates = (data: string[]): ExchangeRatesData => {
-    const [date, header, ...rates] = data;
+export const parseExchangeRates = (data: string): ExchangeRatesData => {
+    const parsedData = data.split("\n")
+    const [date, header, ...rates] = parsedData;
     return {
         date: dateParser(date),
         header: headerParser(header),

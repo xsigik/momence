@@ -7,7 +7,8 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
-      date: "Date",
+      title: "Currency converter",
+      date: "Last updated",
       loading: "Loading...",
     },
   },

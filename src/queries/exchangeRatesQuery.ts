@@ -5,9 +5,7 @@ import { ExchangeRatesData } from "../types";
 
 const EXCHANGE_RATES_API_URL = "./daily.txt";
 
-export const getExchangeRatesQueryKey = () => ['exchangeRates'];
-
-export const getExchangeRates = async () => {
+const getExchangeRates = async () => {
   const response = await fetch(EXCHANGE_RATES_API_URL);
   const text = await response.text();
   
@@ -19,7 +17,7 @@ export const getExchangeRates = async () => {
     };
   }
 
-  const { date, header, rates } = parseExchangeRates(text.split("\n"));
+  const { date, header, rates } = parseExchangeRates(text);
   
   return {
     date,
@@ -29,6 +27,6 @@ export const getExchangeRates = async () => {
 }
 
 export const useExchangeRatesQuery = (): UseQueryResult<ExchangeRatesData | undefined, unknown> => {
-    return useQuery(getExchangeRatesQueryKey(), () => getExchangeRates());
+    return useQuery(['exchangeRates'], () => getExchangeRates());
   };
   
