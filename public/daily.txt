@@ -1,33 +1,33 @@
-03 Mar 2023 #45
+06 Mar 2023 #46
 Country|Currency|Amount|Code|Rate
-Australia|dollar|1|AUD|14.948
-Brazil|real|1|BRL|4.256
-Bulgaria|lev|1|BGN|12.021
-Canada|dollar|1|CAD|16.285
-China|renminbi|1|CNY|3.207
-Denmark|krone|1|DKK|3.159
-EMU|euro|1|EUR|23.510
-Hongkong|dollar|1|HKD|2.821
-Hungary|forint|100|HUF|6.207
-Iceland|krona|100|ISK|15.642
-IMF|SDR|1|XDR|29.451
-India|rupee|100|INR|27.046
-Indonesia|rupiah|1000|IDR|1.448
-Israel|new shekel|1|ILS|6.041
-Japan|yen|100|JPY|16.264
-Malaysia|ringgit|1|MYR|4.948
-Mexico|peso|1|MXN|1.224
-New Zealand|dollar|1|NZD|13.773
-Norway|krone|1|NOK|2.125
-Philippines|peso|100|PHP|40.445
-Poland|zloty|1|PLN|4.994
-Romania|leu|1|RON|4.775
-Singapore|dollar|1|SGD|16.446
-South Africa|rand|1|ZAR|1.219
-South Korea|won|100|KRW|1.700
+Australia|dollar|1|AUD|14.895
+Brazil|real|1|BRL|4.252
+Bulgaria|lev|1|BGN|12.038
+Canada|dollar|1|CAD|16.243
+China|renminbi|1|CNY|3.189
+Denmark|krone|1|DKK|3.164
+EMU|euro|1|EUR|23.545
+Hongkong|dollar|1|HKD|2.817
+Hungary|forint|100|HUF|6.244
+Iceland|krona|100|ISK|15.728
+IMF|SDR|1|XDR|29.408
+India|rupee|100|INR|27.015
+Indonesia|rupiah|1000|IDR|1.446
+Israel|new shekel|1|ILS|6.164
+Japan|yen|100|JPY|16.277
+Malaysia|ringgit|1|MYR|4.938
+Mexico|peso|1|MXN|1.230
+New Zealand|dollar|1|NZD|13.698
+Norway|krone|1|NOK|2.119
+Philippines|peso|100|PHP|40.233
+Poland|zloty|1|PLN|5.000
+Romania|leu|1|RON|4.785
+Singapore|dollar|1|SGD|16.435
+South Africa|rand|1|ZAR|1.215
+South Korea|won|100|KRW|1.703
 Sweden|krona|1|SEK|2.110
-Switzerland|franc|1|CHF|23.611
-Thailand|baht|100|THB|63.921
-Turkey|lira|1|TRY|1.172
-United Kingdom|pound|1|GBP|26.554
-USA|dollar|1|USD|22.148
+Switzerland|franc|1|CHF|23.667
+Thailand|baht|100|THB|64.052
+Turkey|lira|1|TRY|1.170
+United Kingdom|pound|1|GBP|26.568
+USA|dollar|1|USD|22.112
