@@ -7,7 +7,6 @@ const headerParser = (data: string, delimiter: string = "|") => {
 }
 
 const rateParser = (data: string, delimiter: string = "|"): ExchangeRate => {
-    console.log(data);
     const [country, currency, amountRaw, code, rateRaw ] = data.split(delimiter);
     return {
         country,

@@ -11,7 +11,7 @@ export const CountryFlag: React.FC<Props> = ({
   width = 32,
   height = 24,
 }) => {
-  const addImageFallback = (event: SyntheticEvent<HTMLImageElement, Event>) => {
+  const handleError = (event: SyntheticEvent<HTMLImageElement, Event>) => {
     event.currentTarget.src = "/flags/default.png";
   };
 
@@ -22,7 +22,7 @@ export const CountryFlag: React.FC<Props> = ({
       width={width}
       height={height}
       loading="lazy"
-      onError={addImageFallback}
+      onError={handleError}
     />
   );
 };
