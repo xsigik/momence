@@ -4,10 +4,20 @@ import { useTranslation } from "react-i18next";
 import { Card, CardContent, Container, Typography } from "@mui/material";
 import { ExchangeRates } from "../exchangeRates/exchangeRates";
 import { Form } from "../form/form";
+import { useState } from "react";
+import { Conversion } from "../conversion/conversion";
+import { ConversionData } from "../../types";
 
 export const Converter = () => {
   const { isLoading, data } = useExchangeRatesQuery();
   const { t } = useTranslation();
+  const [conversionData, setConversionData] = useState<ConversionData | null>(
+    null
+  );
+
+  const handleConversion = (data: ConversionData) => {
+    setConversionData(data);
+  };
 
   if (isLoading) {
     return <div>{t("loading")}</div>;
@@ -39,7 +49,13 @@ export const Converter = () => {
       <Container maxWidth="sm" sx={{ mb: 4 }}>
         <Card>
           <CardContent>
-            <Form rates={rates} />
+            <Form rates={rates} handleConversion={handleConversion} />
+            {conversionData && (
+              <Conversion
+                rate={conversionData.rate}
+                amount={conversionData.amount}
+              />
+            )}
           </CardContent>
         </Card>
       </Container>
