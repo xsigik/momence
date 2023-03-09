@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from '@mui/material';
 
 export const FormGrid = styled.div`
   display: grid;

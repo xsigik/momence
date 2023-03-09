@@ -38,11 +38,9 @@ export const Converter = () => {
       </Container>
 
       <Container maxWidth="sm" sx={{ mb: 4 }}>
+        <Typography>{t("info.disclaimer")}</Typography>
         <Typography>
-          Foreign exchange market rates are updated only once a day.
-        </Typography>
-        <Typography>
-          Last update: {moment(date).format("DD.MM.YYYY")}
+          {t("info.updatedAt", { date: moment(date).format("DD.MM.YYYY") })}
         </Typography>
       </Container>
 
@@ -62,7 +60,7 @@ export const Converter = () => {
 
       <Container maxWidth="sm" sx={{ mb: 4 }}>
         <Typography variant="h2" sx={{ mb: 2 }}>
-          Exchange rates
+          {t("exchangeRates.title")}
         </Typography>
         <Card>
           <CardContent>

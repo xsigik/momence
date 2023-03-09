@@ -24,7 +24,6 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
-        {/* The rest of your application */}
         <Converter />
         <ReactQueryDevtools initialIsOpen={true} />
       </QueryClientProvider>

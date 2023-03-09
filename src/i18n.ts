@@ -8,8 +8,20 @@ const resources = {
   en: {
     translation: {
       title: "Currency converter",
-      date: "Last updated",
       loading: "Loading...",
+      info: {
+        disclaimer:
+          "Foreign exchange market rates are updated only once a day.",
+        updatedAt: "Last update: {{date}}",
+      },
+      exchangeRates: {
+        title: "Exchange rates",
+      },
+      form: {
+        amount: "Amount CZK",
+        code: "Select currency",
+        submit: "Convert"
+      }
     },
   },
 };

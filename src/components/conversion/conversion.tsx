@@ -1,6 +1,6 @@
 import { ExchangeRate } from "../../types";
 import { convert } from "../../utils/conversion";
-
+import * as SC from "./conversion.styled";
 interface Props {
   amount: number;
   rate: ExchangeRate;
@@ -14,9 +14,9 @@ export const Conversion: React.FC<Props> = ({ amount, rate }) => {
       <p>
         {result} {rate.code}
       </p>
-      <p>
+      <SC.SecondaryText>
         1 {rate.code} = {1 / result} CZK
-      </p>
+      </SC.SecondaryText>
     </div>
   );
 };
