@@ -1,11 +1,11 @@
-import { Box, Button, MenuItem, Select, TextField } from "@mui/material";
-import * as SC from "./form.styled";
-import { CountryFlag } from "../countryFlag/countryFlag";
-import { ConversionData, ExchangeRate } from "../../types";
-import { Controller, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { useTranslation } from "react-i18next";
+import { Box, Button, MenuItem, Select, TextField } from '@mui/material';
+import * as SC from './form.styled';
+import { CountryFlag } from '../countryFlag/countryFlag';
+import { ConversionData, ExchangeRate } from '../../types';
+import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   rates: ExchangeRate[];
@@ -35,9 +35,7 @@ export const Form: React.FC<Props> = ({ rates, handleConversion }) => {
   const { t } = useTranslation();
 
   const onSubmit = (data: FormValues) => {
-    const selectedRate = rates.find(
-      (rate) => rate.code === data.code
-    ) as ExchangeRate;
+    const selectedRate = rates.find((rate) => rate.code === data.code) as ExchangeRate;
 
     handleConversion({
       amount: data.amount,
@@ -51,35 +49,23 @@ export const Form: React.FC<Props> = ({ rates, handleConversion }) => {
         <div>
           <TextField
             fullWidth
-            label={t("form.amount")}
+            label={t('form.amount')}
             variant="outlined"
             error={!!errors.amount}
             type="number"
             inputProps={{
-              step: "any",
+              step: 'any',
             }}
-            helperText={
-              <>{errors.amount?.message ? errors.amount.message : ""}</>
-            }
-            {...register("amount", { valueAsNumber: true })}
+            helperText={<>{errors.amount?.message ? errors.amount.message : ''}</>}
+            {...register('amount', { valueAsNumber: true })}
           />
         </div>
         <div>
           <Controller
             render={({ field }) => (
-              <Select
-                {...field}
-                fullWidth
-                defaultValue=""
-                label={t("form.code")}
-                error={!!errors.code}
-              >
+              <Select {...field} fullWidth defaultValue="" label={t('form.code')} error={!!errors.code}>
                 {rates.map((rate) => (
-                  <MenuItem
-                    key={rate.code}
-                    value={rate.code}
-                    sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                  >
+                  <MenuItem key={rate.code} value={rate.code} sx={{ '& > img': { mr: 2, flexShrink: 0 } }}>
                     <CountryFlag country={rate.country} />
                     {rate.code} — {rate.currency}
                   </MenuItem>
@@ -93,7 +79,7 @@ export const Form: React.FC<Props> = ({ rates, handleConversion }) => {
       </SC.FormGrid>
       <Box display="flex" justifyContent="flex-end" alignItems="flex-end">
         <Button variant="contained" type="submit">
-          {t("form.submit")}
+          {t('form.submit')}
         </Button>
       </Box>
     </form>

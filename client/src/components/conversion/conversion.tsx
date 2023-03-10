@@ -1,6 +1,6 @@
-import { ExchangeRate } from "../../types";
-import { convert } from "../../utils/conversion";
-import * as SC from "./conversion.styled";
+import { ExchangeRate } from '../../types';
+import { convert } from '../../utils/conversion';
+import * as SC from './conversion.styled';
 interface Props {
   amount: number;
   rate: ExchangeRate;
