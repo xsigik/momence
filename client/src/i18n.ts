@@ -22,6 +22,10 @@ const resources = {
         code: 'Select currency',
         submit: 'Convert',
       },
+      result: {
+        czk: '{{value}} Czech koruna',
+        other: '1 {{code}} = {{value}} CZK',
+      },
     },
   },
 };

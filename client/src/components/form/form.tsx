@@ -1,11 +1,11 @@
-import { Box, Button, MenuItem, Select, TextField } from '@mui/material';
+import { Box, Button, MenuItem, TextField } from '@mui/material';
 import * as SC from './form.styled';
 import { CountryFlag } from '../countryFlag/countryFlag';
 import { ConversionData, ExchangeRate } from '../../types';
-import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useTranslation } from 'react-i18next';
+import { useForm } from 'react-hook-form';
 
 interface Props {
   rates: ExchangeRate[];
@@ -26,7 +26,6 @@ export const Form: React.FC<Props> = ({ rates, handleConversion }) => {
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
@@ -61,20 +60,23 @@ export const Form: React.FC<Props> = ({ rates, handleConversion }) => {
           />
         </div>
         <div>
-          <Controller
-            render={({ field }) => (
-              <Select {...field} fullWidth defaultValue="" label={t('form.code')} error={!!errors.code}>
-                {rates.map((rate) => (
-                  <MenuItem key={rate.code} value={rate.code} sx={{ '& > img': { mr: 2, flexShrink: 0 } }}>
-                    <CountryFlag country={rate.country} />
-                    {rate.code} — {rate.currency}
-                  </MenuItem>
-                ))}
-              </Select>
-            )}
-            name="code"
-            control={control}
-          />
+          <TextField
+            select
+            fullWidth
+            defaultValue=""
+            {...register('code')}
+            label={t('form.code')}
+            error={!!errors.code}
+          >
+            {rates.map((rate) => (
+              <MenuItem key={rate.code} value={rate.code}>
+                <Box display="flex" alignItems="center" sx={{ '& > img': { mr: 2, flexShrink: 0 } }}>
+                  <CountryFlag country={rate.country} width={24} height={18} />
+                  {rate.code} — {rate.currency}
+                </Box>
+              </MenuItem>
+            ))}
+          </TextField>
         </div>
       </SC.FormGrid>
       <Box display="flex" justifyContent="flex-end" alignItems="flex-end">

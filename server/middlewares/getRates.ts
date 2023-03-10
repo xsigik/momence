@@ -4,7 +4,7 @@ import { parseExchangeRates } from '../utils/exchangeRates';
 const EXCHANGE_RATES_API_URL =
   'http://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt';
 
-export const getRates: RequestHandler = async (req, res, next) => {
+export const getRates: RequestHandler = async (req, res) => {
   try {
     const response = await fetch(EXCHANGE_RATES_API_URL);
     const text = await response.text();
@@ -27,6 +27,4 @@ export const getRates: RequestHandler = async (req, res, next) => {
   } catch (err) {
     console.error(err);
   }
-
-  next();
 };

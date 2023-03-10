@@ -3,9 +3,13 @@ import { ExchangeRatesData } from '../types';
 
 const EXCHANGE_RATES_API_URL = '/api/rates';
 
-const getExchangeRates = async () => {
+const getExchangeRates = async (): Promise<ExchangeRatesData> => {
   const response = await fetch(EXCHANGE_RATES_API_URL);
-  const data = await response.json();
+  const data: ExchangeRatesData = await response.json();
+
+  if (!data) {
+    throw new Error('Error fetching exchange rates.');
+  }
   return data;
 };
 
