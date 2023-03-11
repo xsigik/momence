@@ -1,4 +1,5 @@
 import { SyntheticEvent } from 'react';
+import { CountryFlagDataTests } from './countryFlag.constants';
 
 interface Props {
   country: string;
@@ -19,6 +20,7 @@ export const CountryFlag: React.FC<Props> = ({ country, width = 32, height = 24 
       height={height}
       loading="lazy"
       onError={handleError}
+      data-testid={CountryFlagDataTests.img}
     />
   );
 };

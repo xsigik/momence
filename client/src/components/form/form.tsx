@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
+import { FormDataTests } from './form.constant';
 
 interface Props {
   rates: ExchangeRate[];
@@ -18,8 +19,10 @@ interface FormValues {
 }
 
 const schema = z.object({
-  amount: z.number().nonnegative(),
-  code: z.string().nonempty(),
+  amount: z
+    .number({ invalid_type_error: 'Amount must not be empty.' })
+    .nonnegative({ message: 'Amount must be greater than 0.' }),
+  code: z.string().nonempty({ message: 'Currency must not be empty.' }),
 });
 
 export const Form: React.FC<Props> = ({ rates, handleConversion }) => {
@@ -53,6 +56,7 @@ export const Form: React.FC<Props> = ({ rates, handleConversion }) => {
             error={!!errors.amount}
             type="number"
             inputProps={{
+              'data-testid': FormDataTests.amount,
               step: 'any',
             }}
             helperText={<>{errors.amount?.message ? errors.amount.message : ''}</>}
@@ -67,6 +71,10 @@ export const Form: React.FC<Props> = ({ rates, handleConversion }) => {
             {...register('code')}
             label={t('form.code')}
             error={!!errors.code}
+            helperText={<>{errors.code?.message ? errors.code.message : ''}</>}
+            inputProps={{
+              'data-testid': FormDataTests.code,
+            }}
           >
             {rates.map((rate) => (
               <MenuItem key={rate.code} value={rate.code}>
@@ -80,7 +88,7 @@ export const Form: React.FC<Props> = ({ rates, handleConversion }) => {
         </div>
       </SC.FormGrid>
       <Box display="flex" justifyContent="flex-end" alignItems="flex-end">
-        <Button variant="contained" type="submit">
+        <Button data-testid={FormDataTests.submit} variant="contained" type="submit">
           {t('form.submit')}
         </Button>
       </Box>
