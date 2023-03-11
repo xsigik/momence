@@ -4,52 +4,46 @@ import { useTranslation } from 'react-i18next';
 import { Alert, Card, CardContent, Container, Typography } from '@mui/material';
 import { ExchangeRates } from '../exchangeRates/exchangeRates';
 import { Form } from '../form/form';
-import { useState } from 'react';
 import { Conversion } from '../conversion/conversion';
 import { ConversionData } from '../../types';
+import { useConversion } from '../../hooks/useConversion';
+
+const CONTAINER_GAP = 4;
 
 export const Converter = () => {
-  const { isLoading, data } = useExchangeRatesQuery();
   const { t } = useTranslation();
-  const [conversionData, setConversionData] = useState<ConversionData | null>(null);
+  const { isLoading, data: exchangeRatesData } = useExchangeRatesQuery();
+  const { setInputData, data: conversionData } = useConversion();
 
-  const handleConversion = (data: ConversionData) => {
-    setConversionData(data);
-  };
+  const handleConversion = (data: ConversionData) => setInputData(data.amount, data.rate);
 
   if (isLoading) {
-    return <div>{t('loading')}</div>;
+    return <Alert severity="info">{t('loading')}</Alert>;
   }
 
-  if (!data) {
+  if (!exchangeRatesData) {
     return <Alert severity="error">{t('error')}</Alert>;
   }
 
-  const { date, rates, header } = data;
+  const { date, rates, header } = exchangeRatesData;
 
   return (
     <>
-      <Container maxWidth="sm" sx={{ pt: 2 }}>
-        <Typography variant="h1" sx={{ mb: 2 }}>
-          {t('title')}
-        </Typography>
-      </Container>
-
-      <Container maxWidth="sm" sx={{ mb: 4 }}>
+      <Container sx={{ mb: CONTAINER_GAP }}>
         <Typography>{t('info.disclaimer')}</Typography>
         <Typography>{t('info.updatedAt', { date: moment(date).format('DD.MM.YYYY') })}</Typography>
       </Container>
 
-      <Container maxWidth="sm" sx={{ mb: 4 }}>
+      <Container sx={{ mb: CONTAINER_GAP }}>
         <Card>
           <CardContent>
             <Form rates={rates} handleConversion={handleConversion} />
-            {conversionData && <Conversion rate={conversionData.rate} amount={conversionData.amount} />}
+            <Conversion {...conversionData} />
           </CardContent>
         </Card>
       </Container>
 
-      <Container maxWidth="sm" sx={{ mb: 4 }}>
+      <Container sx={{ mb: CONTAINER_GAP }}>
         <Typography variant="h2" sx={{ mb: 2 }}>
           {t('exchangeRates.title')}
         </Typography>
