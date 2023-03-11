@@ -11,12 +11,12 @@ const port = process.env.PORT;
 
 app.use(morgan('short'));
 
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../../client/build')));
 
 app.get('/api/rates', getRates);
 
 app.get('/', (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
 });
 
 app.listen(port, () => {

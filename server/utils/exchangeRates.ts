@@ -1,4 +1,16 @@
-import { ExchangeRate, ExchangeRatesData } from '../../client/src/types';
+interface ExchangeRate {
+  country: string;
+  currency: string;
+  amount: number;
+  code: string;
+  rate: number;
+}
+
+interface ExchangeRatesData {
+  date: Date | null;
+  header: string[];
+  rates: ExchangeRate[];
+}
 
 const dateParser = (date: string): Date => new Date(date);
 
