@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ConversionData, ExchangeRate } from '../types';
+import { ConversionData } from '../types';
 import { convert } from '../utils/conversion';
 
 export const useConversion = () => {
@@ -16,6 +16,6 @@ export const useConversion = () => {
       amount,
       rate,
     },
-    setInputData: (amount: number, rate: ExchangeRate) => setData({ amount, rate }),
+    setInputData: setData,
   };
 };
