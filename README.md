@@ -9,18 +9,36 @@ The purpose of this application is to convert CZK to other currencies according 
 In the project directory, you can run:
 
 ```
+yarn install // installs client and server node modules
 yarn dev    // runs the app in the development mode
 yarn build  // builds client and server parts of the app
 yarn start  // starts production build
 yarn test   //runs tests
 ```
 
+### Installation
+
+```
+yarn install
+```
+
+Command will install node modules for the server part and `postinstall` script will automatically take care about the client installation.
+
 ### Development mode
+
+```
+yarn dev
+```
 
 Open [http://localhost:8080](http://localhost:8080) for the server.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### Production mode
+
+```
+yarn build
+yarn start
+```
 
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
@@ -29,7 +47,5 @@ Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 ![Coverage](./doc/coverage.png)
 
 ## Instructions
-
-Create a simple React app (don’t use NextJS please), which:
 
 ![Instructions](./doc/instructions.png)
