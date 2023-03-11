@@ -1,12 +1,6 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from "@mui/material";
-import { ExchangeRate } from "../../types";
-import { CountryFlag } from "../countryFlag/countryFlag";
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { ExchangeRate } from '../../types';
+import { CountryFlag } from '../countryFlag/countryFlag';
 
 interface Props {
   header: string[];
