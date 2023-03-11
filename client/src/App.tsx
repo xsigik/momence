@@ -3,7 +3,8 @@ import './i18n';
 import { Converter } from './components/converter/converter';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { ThemeProvider, createTheme } from '@mui/material';
+import { Container, ThemeProvider, Typography, createTheme } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const theme = createTheme({
   typography: {
@@ -20,10 +21,19 @@ const theme = createTheme({
 const queryClient = new QueryClient({});
 
 const App = () => {
+  const { t } = useTranslation();
+
   return (
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
-        <Converter />
+        <Container maxWidth="sm">
+          <Container sx={{ pt: 2 }}>
+            <Typography variant="h1" sx={{ mb: 2 }}>
+              {t('title')}
+            </Typography>
+          </Container>
+          <Converter />
+        </Container>
         <ReactQueryDevtools initialIsOpen={true} />
       </QueryClientProvider>
     </ThemeProvider>

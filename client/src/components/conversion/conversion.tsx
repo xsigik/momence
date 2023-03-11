@@ -1,15 +1,20 @@
 import { useTranslation } from 'react-i18next';
 import { ExchangeRate } from '../../types';
-import { convert } from '../../utils/conversion';
 import * as SC from './conversion.styled';
 interface Props {
   amount: number;
-  rate: ExchangeRate;
+  result: number;
+  resultInverted: number;
+  rate: ExchangeRate | null;
 }
 
-export const Conversion: React.FC<Props> = ({ amount, rate }) => {
+export const Conversion: React.FC<Props> = ({ amount, result, resultInverted, rate }) => {
   const { t } = useTranslation();
-  const result = convert(amount, rate);
+
+  if (!rate) {
+    return null;
+  }
+
   return (
     <div>
       <SC.SecondaryText>
@@ -18,7 +23,7 @@ export const Conversion: React.FC<Props> = ({ amount, rate }) => {
       <SC.Result>
         {result} {rate.code}
       </SC.Result>
-      <SC.SecondaryText>{t('result.other', { code: rate.code, value: 1 / result })}</SC.SecondaryText>
+      <SC.SecondaryText>{t('result.other', { code: rate.code, value: resultInverted })}</SC.SecondaryText>
     </div>
   );
 };
