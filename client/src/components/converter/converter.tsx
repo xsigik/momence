@@ -19,7 +19,7 @@ export const Converter = () => {
   }
 
   if (!exchangeRatesData) {
-    return <Alert severity="error">{t('error')}</Alert>;
+    return <Alert severity="error">{t('error.data')}</Alert>;
   }
 
   const { date, rates, header } = exchangeRatesData;

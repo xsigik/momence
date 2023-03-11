@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Container, ThemeProvider, Typography, createTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { ErrorBoundary } from './errorBoundary';
 
 const theme = createTheme({
   typography: {
@@ -24,19 +25,21 @@ const App = () => {
   const { t } = useTranslation();
 
   return (
-    <ThemeProvider theme={theme}>
-      <QueryClientProvider client={queryClient}>
-        <Container maxWidth="sm">
-          <Container sx={{ pt: 2 }}>
-            <Typography variant="h1" sx={{ mb: 2 }}>
-              {t('title')}
-            </Typography>
+    <ErrorBoundary>
+      <ThemeProvider theme={theme}>
+        <QueryClientProvider client={queryClient}>
+          <Container maxWidth="sm">
+            <Container sx={{ pt: 2 }}>
+              <Typography variant="h1" sx={{ mb: 2 }}>
+                {t('title')}
+              </Typography>
+            </Container>
+            <Converter />
           </Container>
-          <Converter />
-        </Container>
-        <ReactQueryDevtools initialIsOpen={true} />
-      </QueryClientProvider>
-    </ThemeProvider>
+          <ReactQueryDevtools initialIsOpen={true} />
+        </QueryClientProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 };
 
