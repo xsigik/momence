@@ -9,7 +9,10 @@ const resources = {
     translation: {
       title: 'Currency converter',
       loading: 'Loading...',
-      error: 'Application error - server is not responding.',
+      error: {
+        app: "Error - something's wrong with the app.",
+        server: 'Error - server is not responding.',
+      },
       info: {
         disclaimer: 'Foreign exchange market rates are updated only once a day.',
         updatedAt: 'Last update: {{date}}',
