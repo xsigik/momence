@@ -44,11 +44,7 @@ export const Converter = () => {
         <Typography variant="h2" sx={{ mb: 2 }}>
           {t('exchangeRates.title')}
         </Typography>
-        <Card>
-          <CardContent>
-            <ExchangeRates header={header} rates={rates} />
-          </CardContent>
-        </Card>
+        <ExchangeRates header={header} rates={rates} />
       </Container>
     </>
   );

@@ -9,6 +9,10 @@ export const SecondaryText = styled('p')(
 );
 
 export const Result = styled('p')`
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 0;
+
+  @media (min-width: 500px) {
+    font-size: 2rem;
+  }
 `;
