@@ -5,7 +5,6 @@ import { Alert, Card, CardContent, Container, Typography } from '@mui/material';
 import { ExchangeRates } from '../exchangeRates/exchangeRates';
 import { Form } from '../form/form';
 import { Conversion } from '../conversion/conversion';
-import { ConversionData } from '../../types';
 import { useConversion } from '../../hooks/useConversion';
 
 const CONTAINER_GAP = 4;
@@ -14,8 +13,6 @@ export const Converter = () => {
   const { t } = useTranslation();
   const { isLoading, data: exchangeRatesData } = useExchangeRatesQuery();
   const { setInputData, data: conversionData } = useConversion();
-
-  const handleConversion = (data: ConversionData) => setInputData(data.amount, data.rate);
 
   if (isLoading) {
     return <Alert severity="info">{t('loading')}</Alert>;
@@ -37,7 +34,7 @@ export const Converter = () => {
       <Container sx={{ mb: CONTAINER_GAP }}>
         <Card>
           <CardContent>
-            <Form rates={rates} handleConversion={handleConversion} />
+            <Form rates={rates} handleConversion={setInputData} />
             <Conversion {...conversionData} />
           </CardContent>
         </Card>
